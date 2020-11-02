@@ -4,12 +4,10 @@ describe('New Payee Test', () => {
 		cy.get('#signin_button').click()
 
 		cy.fixture('user').then(user => {
-			cy.get('#user_login').type(user.id)
-			cy.get('#user_password').type(user.pwd)
+			cy.login(user.id, user.pwd)
 		})
-
-		cy.contains('Sign in').click()
 	})
+
 	it('Should add new payee to the list', () => {
 		cy.get('#pay_bills_tab').click()
 		cy.contains('Add New Payee').click()
